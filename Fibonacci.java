@@ -6,16 +6,25 @@ public class Fibonacci
 
 	//instance data
 	int output;
+	int prev;
+	int preprev;
+	int fib;
+	int realFib;
 
 	//constructor
 	public Fibonacci()
 	{
 		output = 0;
+		fib = 0;
 	}
 
 	//chooses between iterative and recursive
 	public int fibonacci(int n, String type)
 	{
+		prev = 0;
+		preprev = 0;
+		output = 1;
+		
 		if (type == "iterative")
 		{
 			output = 0;
@@ -33,9 +42,21 @@ public class Fibonacci
 	//uses for loop
 	public void fibonacci_iterative(int i)
 	{
-		for (int j = 1; j <= i; j++)
+		if (i == 0)
 		{
-			output += j;
+			output = 0;
+		}
+
+		else
+		{
+			output = 1;
+		}
+		
+		for (int j = 1; j < i; j++)
+		{
+			preprev = prev;
+			prev = output;
+			output = prev + preprev;
 		}
 	}
 
@@ -44,7 +65,9 @@ public class Fibonacci
 	{
 		if (i > 1)
 		{
-			output += i;
+			preprev = prev;
+			prev = output;
+			output = prev + preprev;
 			fibonacci_recursive(i-1);
 		}
 	}
