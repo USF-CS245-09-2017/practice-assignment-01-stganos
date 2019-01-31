@@ -9,7 +9,6 @@ public class Fibonacci
 	int prev;
 	int preprev;
 	int fib;
-	int realFib;
 
 	//constructor
 	public Fibonacci()
